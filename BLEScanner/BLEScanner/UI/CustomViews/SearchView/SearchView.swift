@@ -21,7 +21,7 @@ class SearchView: UIView {
         UIView.animate(withDuration: 1.0,
                        delay: 0,
                        options: [.autoreverse, .repeat, .allowUserInteraction],
-                       animations: { self.searchImageView.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+                       animations: { self.searchImageView.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
         })
     }
 }

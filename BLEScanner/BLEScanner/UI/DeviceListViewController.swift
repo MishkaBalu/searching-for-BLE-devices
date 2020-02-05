@@ -19,16 +19,26 @@ class DeviceListViewController: UIViewController {
     //MARK: - Lifecycle
     
     var searchView: SearchView!
+    var deviceListView: DeviceListView!
+    var scanner: BluetoothManager!
     
     override func loadView() {
         super.loadView()
         searchView = Bundle.loadView(fromNib: "SearchView", withType: SearchView.self)
+        deviceListView = Bundle.loadView(fromNib: "DeviceListView", withType: DeviceListView.self)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         searchView.frame = centerView.bounds
         self.centerView.addSubview(searchView)
+        scanner = BluetoothManager(timeout: 5.0)
+        scanner.scanForDevices { items in
+            self.deviceListView.frame = self.centerView.bounds
+            self.deviceListView.commonInit()
+            self.deviceListView.setModel(items.map({$0.identifier.description}))
+            self.centerView.addSubview(self.deviceListView)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {

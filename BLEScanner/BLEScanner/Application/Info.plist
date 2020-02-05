@@ -51,6 +51,10 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>We need Bluetooth</string>
+    <key>NSBluetoothAlwaysUsageDescription</key>
+    <string>We need Bluetooth</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
