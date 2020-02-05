@@ -47,4 +47,8 @@ extension DeviceListView: UITableViewDelegate, UITableViewDataSource {
         cell.configureCell(items[indexPath.row])
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        (UIApplication.shared.keyWindow?.rootViewController as! UINavigationController).pushViewController(HeadphoneSettingsViewController(), animated: true)
+    }
 }

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HeadphoneSettingsViewController" customModule="BLEScanner" customModuleProvider="target">
+            <connections>
+                <outlet property="leftHeadphone" destination="oid-NB-9uL" id="xMm-3G-8wV"/>
+                <outlet property="rightHeadphone" destination="gAB-mB-kRP" id="Y8e-gT-WE6"/>
+                <outlet property="sendButton" destination="H43-yn-4NL" id="cV0-fN-upQ"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="flG-MA-EnN">
+                    <rect key="frame" x="8" y="24" width="30" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="1Kz-ZN-T8m"/>
+                        <constraint firstAttribute="width" constant="30" id="o3v-Nv-1yR"/>
+                    </constraints>
+                    <state key="normal" title="Button" image="back"/>
+                </button>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="nzE-0i-yxg">
+                    <rect key="frame" x="112.5" y="231" width="150" height="205.5"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PB8-Lk-VFB">
+                            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="headphones_empty" translatesAutoresizingMaskIntoConstraints="NO" id="5mu-ll-Nt4">
+                                    <rect key="frame" x="7" y="19" width="136" height="112"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="112" id="2HD-Mm-bVU"/>
+                                        <constraint firstAttribute="width" secondItem="5mu-ll-Nt4" secondAttribute="height" multiplier="17:14" id="ZTp-eV-h5T"/>
+                                    </constraints>
+                                </imageView>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="left_headphone" translatesAutoresizingMaskIntoConstraints="NO" id="oid-NB-9uL">
+                                    <rect key="frame" x="28" y="84" width="16" height="56"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="16" id="Mg5-pz-dsM"/>
+                                        <constraint firstAttribute="width" secondItem="oid-NB-9uL" secondAttribute="height" multiplier="2:7" id="vRq-2K-AmA"/>
+                                    </constraints>
+                                </imageView>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right_headphone" translatesAutoresizingMaskIntoConstraints="NO" id="gAB-mB-kRP">
+                                    <rect key="frame" x="106" y="84" width="16" height="56"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="16" id="0fC-v6-YjC"/>
+                                        <constraint firstAttribute="width" secondItem="gAB-mB-kRP" secondAttribute="height" multiplier="2:7" id="m19-cW-OmP"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="gAB-mB-kRP" secondAttribute="trailing" constant="28" id="SCl-dU-1IQ"/>
+                                <constraint firstItem="5mu-ll-Nt4" firstAttribute="centerX" secondItem="PB8-Lk-VFB" secondAttribute="centerX" id="bmP-Hc-4aA"/>
+                                <constraint firstItem="5mu-ll-Nt4" firstAttribute="centerY" secondItem="PB8-Lk-VFB" secondAttribute="centerY" id="cAd-2z-TIg"/>
+                                <constraint firstAttribute="width" constant="150" id="eL8-za-bVe"/>
+                                <constraint firstItem="gAB-mB-kRP" firstAttribute="centerY" secondItem="oid-NB-9uL" secondAttribute="centerY" id="tMT-Qo-wj9"/>
+                                <constraint firstItem="oid-NB-9uL" firstAttribute="leading" secondItem="PB8-Lk-VFB" secondAttribute="leading" constant="28" id="tOB-l0-f4F"/>
+                                <constraint firstAttribute="bottom" secondItem="oid-NB-9uL" secondAttribute="bottom" constant="10" id="uW1-5z-s4i"/>
+                                <constraint firstAttribute="height" constant="150" id="vVj-hL-Lvf"/>
+                            </constraints>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loud &amp; Free" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dcd-5F-fmM">
+                            <rect key="frame" x="9" y="182" width="132.5" height="23.5"/>
+                            <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="20"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H43-yn-4NL">
+                    <rect key="frame" x="115.5" y="561" width="144" height="46"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="144" id="Ryg-f4-56H"/>
+                        <constraint firstAttribute="height" constant="46" id="T5V-iO-jca"/>
+                    </constraints>
+                    <state key="normal" title=" SEND" image="send_black">
+                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                    </state>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="H43-yn-4NL" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="Hs6-TA-A0c"/>
+                <constraint firstItem="flG-MA-EnN" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="24" id="PjX-pR-aYy"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="H43-yn-4NL" secondAttribute="bottom" constant="60" id="Vhw-MO-Ocs"/>
+                <constraint firstItem="flG-MA-EnN" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="YNt-sD-8cM"/>
+                <constraint firstItem="nzE-0i-yxg" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="h91-8k-0FB"/>
+                <constraint firstItem="nzE-0i-yxg" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="rkl-xI-a31"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="138.40000000000001" y="144.3778110944528"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="back" width="18.5" height="30"/>
+        <image name="headphones_empty" width="137" height="112.5"/>
+        <image name="left_headphone" width="16.5" height="56.5"/>
+        <image name="right_headphone" width="16.5" height="56.5"/>
+        <image name="send_black" width="24" height="23"/>
+    </resources>
+</document>

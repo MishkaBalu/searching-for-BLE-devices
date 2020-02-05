@@ -21,6 +21,8 @@
 		C323338D23EB1059000D126D /* DeviceListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C323338C23EB1059000D126D /* DeviceListView.xib */; };
 		C323338F23EB1067000D126D /* DeviceListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C323338E23EB1067000D126D /* DeviceListView.swift */; };
 		C323339223EB15B3000D126D /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C323339123EB15B3000D126D /* BluetoothManager.swift */; };
+		C358C5BD23EB25BD009D7095 /* HeadphoneSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C358C5BB23EB25BD009D7095 /* HeadphoneSettingsViewController.swift */; };
+		C358C5BE23EB25BD009D7095 /* HeadphoneSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C358C5BC23EB25BD009D7095 /* HeadphoneSettingsViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +54,8 @@
 		C323338C23EB1059000D126D /* DeviceListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeviceListView.xib; sourceTree = "<group>"; };
 		C323338E23EB1067000D126D /* DeviceListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceListView.swift; sourceTree = "<group>"; };
 		C323339123EB15B3000D126D /* BluetoothManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothManager.swift; sourceTree = "<group>"; };
+		C358C5BB23EB25BD009D7095 /* HeadphoneSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadphoneSettingsViewController.swift; sourceTree = "<group>"; };
+		C358C5BC23EB25BD009D7095 /* HeadphoneSettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeadphoneSettingsViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +129,7 @@
 		C323337723EAE0AC000D126D /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				C358C5BA23EB2580009D7095 /* HeadphoneSettings */,
 				C323338B23EB1046000D126D /* DeviceList */,
 				C323338A23EB1033000D126D /* SearchView */,
 			);
@@ -174,6 +179,15 @@
 				C323337723EAE0AC000D126D /* CustomViews */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		C358C5BA23EB2580009D7095 /* HeadphoneSettings */ = {
+			isa = PBXGroup;
+			children = (
+				C358C5BB23EB25BD009D7095 /* HeadphoneSettingsViewController.swift */,
+				C358C5BC23EB25BD009D7095 /* HeadphoneSettingsViewController.xib */,
+			);
+			path = HeadphoneSettings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,6 +273,7 @@
 			files = (
 				C323338D23EB1059000D126D /* DeviceListView.xib in Resources */,
 				C323337D23EAE108000D126D /* SearchView.xib in Resources */,
+				C358C5BE23EB25BD009D7095 /* HeadphoneSettingsViewController.xib in Resources */,
 				C323336223EAD894000D126D /* LaunchScreen.storyboard in Resources */,
 				C323335F23EAD894000D126D /* Assets.xcassets in Resources */,
 				C323335D23EAD892000D126D /* Main.storyboard in Resources */,
@@ -284,6 +299,7 @@
 				C323338423EB0D6A000D126D /* DeviceListTableViewCell.swift in Sources */,
 				C323337A23EAE0D4000D126D /* SearchView.swift in Sources */,
 				C323339223EB15B3000D126D /* BluetoothManager.swift in Sources */,
+				C358C5BD23EB25BD009D7095 /* HeadphoneSettingsViewController.swift in Sources */,
 				C323335A23EAD892000D126D /* DeviceListViewController.swift in Sources */,
 				C323335623EAD891000D126D /* AppDelegate.swift in Sources */,
 				C323335823EAD892000D126D /* SceneDelegate.swift in Sources */,
