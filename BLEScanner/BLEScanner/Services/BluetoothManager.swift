@@ -27,6 +27,10 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate {
         }
     }
     
+    func connectToDevice(with UUID: UUID, completion: @escaping (Bool) -> Void) {
+        completion(true)
+    }
+    
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         if central.state == .poweredOn {
             print("Bluetooth is On")
@@ -41,6 +45,5 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate {
     
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         discoveredDevices.append(peripheral)
-        print("\nName   : 😅\(peripheral.identifier.description)")
     }
 }

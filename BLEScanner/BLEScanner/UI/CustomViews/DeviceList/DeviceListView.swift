@@ -13,8 +13,9 @@ class DeviceListView: UIView {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var items = [String]()
+    weak var delegate: DeviceListDelegate!
     
+    var items = [PeripheralDevice]()
     
     override class func awakeFromNib() {
         super.awakeFromNib()
@@ -26,7 +27,7 @@ class DeviceListView: UIView {
         tableView.register(UINib(nibName: "DeviceListTableViewCell", bundle: nil), forCellReuseIdentifier: "DeviceListTableViewCell")
     }
     
-    func setModel(_ model: [String]) {
+    func setModel(_ model: [PeripheralDevice]) {
         self.items = model
         tableView.reloadData()
     }
@@ -49,6 +50,15 @@ extension DeviceListView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        (UIApplication.shared.keyWindow?.rootViewController as! UINavigationController).pushViewController(HeadphoneSettingsViewController(), animated: true)
+        delegate.selectedDevice(withUDID: items[indexPath.row].UUID)
     }
+}
+
+protocol DeviceListDelegate: class {
+    func selectedDevice(withUDID: UUID) -> Void
+}
+
+struct PeripheralDevice {
+    var name: String?
+    var UUID: UUID
 }

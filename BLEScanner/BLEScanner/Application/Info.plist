@@ -20,6 +20,10 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>We need bluetooth to discover nearby devices</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>We need Bluetooth</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -51,10 +55,6 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
-	<key>NSBluetoothPeripheralUsageDescription</key>
-	<string>We need Bluetooth</string>
-    <key>NSBluetoothAlwaysUsageDescription</key>
-    <string>We need Bluetooth</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

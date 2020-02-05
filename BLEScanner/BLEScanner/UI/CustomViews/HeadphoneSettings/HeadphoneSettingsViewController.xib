@@ -21,14 +21,6 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="flG-MA-EnN">
-                    <rect key="frame" x="8" y="24" width="30" height="30"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="30" id="1Kz-ZN-T8m"/>
-                        <constraint firstAttribute="width" constant="30" id="o3v-Nv-1yR"/>
-                    </constraints>
-                    <state key="normal" title="Button" image="back"/>
-                </button>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="nzE-0i-yxg">
                     <rect key="frame" x="112.5" y="231" width="150" height="205.5"/>
                     <subviews>
@@ -83,7 +75,7 @@
                         <constraint firstAttribute="width" constant="144" id="Ryg-f4-56H"/>
                         <constraint firstAttribute="height" constant="46" id="T5V-iO-jca"/>
                     </constraints>
-                    <state key="normal" title=" SEND" image="send_black">
+                    <state key="normal" title="  SEND" image="send_black">
                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                     </state>
                 </button>
@@ -91,9 +83,7 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="H43-yn-4NL" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="Hs6-TA-A0c"/>
-                <constraint firstItem="flG-MA-EnN" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="24" id="PjX-pR-aYy"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="H43-yn-4NL" secondAttribute="bottom" constant="60" id="Vhw-MO-Ocs"/>
-                <constraint firstItem="flG-MA-EnN" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="YNt-sD-8cM"/>
                 <constraint firstItem="nzE-0i-yxg" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="h91-8k-0FB"/>
                 <constraint firstItem="nzE-0i-yxg" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="rkl-xI-a31"/>
             </constraints>
@@ -102,7 +92,6 @@
         </view>
     </objects>
     <resources>
-        <image name="back" width="18.5" height="30"/>
         <image name="headphones_empty" width="137" height="112.5"/>
         <image name="left_headphone" width="16.5" height="56.5"/>
         <image name="right_headphone" width="16.5" height="56.5"/>
