@@ -20,19 +20,20 @@ class DeviceListViewController: UIViewController, Alertable {
     
     private var searchView: SearchView!
     private var deviceListView: DeviceListView!
-    private var bleManager: BluetoothManager!
     private var selected: UUID?
+    
+    private var presenter: DeviceListPresenterProtocol?
     
     //MARK: - IBActions
     @IBAction func connectButtonPressed(_ sender: UIButton) {
         selected.unwrap { [weak self] in
-            self?.bleManager.connectToDevice(with: $0) { (success) in
-                if success {
+            self?.presenter?.connectToDevice(UUID: $0, completion: { isSuccess in
+                if isSuccess {
                     self?.navigationController?.pushViewController(HeadphoneSettingsViewController(), animated: true)
                 } else {
                     self?.showAlert(title: "Bluetooth connection error", message: "An error during connecting to BLE device occured", preferredStyle: .alert)
                 }
-            }
+            })
         }
     }
     
@@ -46,33 +47,27 @@ class DeviceListViewController: UIViewController, Alertable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.isTranslucent = true
-        setupConnectButton()
-        searchView.frame = centerView.bounds
-        self.centerView.addSubview(searchView)
-        bleManager = BluetoothManager(timeout: 5.0)
-        bleManager.scanForDevices { items in
-            self.deviceListView.frame = self.centerView.bounds
-            self.deviceListView.commonInit()
-            self.deviceListView.delegate = self
-            self.deviceListView.setModel(items.map({ PeripheralDevice(name: $0.name, UUID: $0.identifier) }))
-            self.centerView.addSubview(self.deviceListView)
-            self.setupConnectButton(items.count > 0, shouldAnimate: true)
-        }
+        setupPresenter()
+        setupUI()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        startSearching()
-    }
-    
-    func startSearching() {
         searchView.animateSearching()
     }
     
-    func setupConnectButton(_ isEnabled: Bool = false, shouldAnimate: Bool = false) {
+    private func setupSearchView() {
+        searchView.frame = centerView.bounds
+        centerView.addSubview(searchView)
+    }
+    
+    private func setupNavigationBar() {
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = true
+    }
+    
+    private func setupConnectButton(_ isEnabled: Bool = false, shouldAnimate: Bool = false) {
         if shouldAnimate {
             UIView.animate(withDuration: 0.2, delay: 0, options: [], animations: {
                 self.connectButton.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
@@ -97,32 +92,22 @@ extension DeviceListViewController: DeviceListDelegate {
     }
 }
 
-
-extension Bundle {
-
-    static func loadView<T>(fromNib name: String, withType type: T.Type) -> T {
-        if let view = Bundle.main.loadNibNamed(name, owner: nil, options: nil)?.first as? T {
-            return view
-        }
-
-        fatalError("Could not load view with type " + String(describing: type))
+extension DeviceListViewController: ControlSetupProtocol {
+    func setupUI() {
+        setupNavigationBar()
+        setupConnectButton()
+        setupSearchView()
     }
-}
-
-extension Optional {
-    @discardableResult
-    func unwrap<Ret>(_ f: @escaping (Wrapped) -> Ret) -> Ret? {
-        if case .some(let wrapped) = self { return f(wrapped) }
-        return nil
-    }
-}
-
-public protocol Alertable {}
-public extension Alertable where Self: UIViewController {
     
-    func showAlert(title: String = "", message: String, preferredStyle: UIAlertController.Style = .alert, completion: (() -> Void)? = nil) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-        self.present(alert, animated: true, completion: completion)
+    func setupPresenter() {
+        presenter = DeviceListPresenter(service: BluetoothManager(timeout: 5.0))
+        presenter?.searchForDevices { [weak self] models in
+            guard let self = self else { return }
+            self.deviceListView.frame = self.centerView.bounds
+            self.deviceListView.delegate = self
+            self.deviceListView.commonInit(models.map({ PeripheralDevice(name: $0.name, UUID: $0.identifier) }))
+            self.centerView.addSubview(self.deviceListView)
+            self.setupConnectButton(models.count > 0, shouldAnimate: true)
+        }
     }
 }

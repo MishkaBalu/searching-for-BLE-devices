@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import CoreBluetooth
 
 class DeviceListView: UIView {
+    // MARK: - IBOutlets
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -17,21 +17,24 @@ class DeviceListView: UIView {
     
     var items = [PeripheralDevice]()
     
-    override class func awakeFromNib() {
-        super.awakeFromNib()
-    }
+    // MARK: - Init
     
-    func commonInit() {
+    func commonInit(_ model: [PeripheralDevice]) {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "DeviceListTableViewCell", bundle: nil), forCellReuseIdentifier: "DeviceListTableViewCell")
-    }
-    
-    func setModel(_ model: [PeripheralDevice]) {
-        self.items = model
+        items = model
         tableView.reloadData()
     }
+    
+    // MARK: - awakeFromNib()
+    
+    override class func awakeFromNib() {
+        super.awakeFromNib()
+    }
 }
+
+// MARK: - UITableViewDelegate, UITableViewDataSource
 
 extension DeviceListView: UITableViewDelegate, UITableViewDataSource {
     
