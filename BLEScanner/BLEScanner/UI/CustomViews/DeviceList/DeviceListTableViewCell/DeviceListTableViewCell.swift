@@ -16,7 +16,7 @@ class DeviceListTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
     
-    func configureCell(_ model: PeripheralDevice) {
-        self.deviceNameLabel.text = model.name?.uppercased() ?? "Unknown peripheral #\(model.UUID.description.components(separatedBy: "-")[0])".uppercased()
+    func configureCell(_ name: String) {
+        self.deviceNameLabel.text = name
     }
 }

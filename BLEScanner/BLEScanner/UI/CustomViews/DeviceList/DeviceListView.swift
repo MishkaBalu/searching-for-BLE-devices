@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol DeviceListDelegate: class {
+    func selectedDevice(withUDID: UUID) -> Void
+}
+
 class DeviceListView: UIView {
     // MARK: - IBOutlets
     
@@ -15,16 +19,15 @@ class DeviceListView: UIView {
     
     weak var delegate: DeviceListDelegate!
     
-    var items = [PeripheralDevice]()
+    private var viewModel: DeviceListViewModel!
     
     // MARK: - Init
     
-    func commonInit(_ model: [PeripheralDevice]) {
+    func commonInit(_ model: DeviceListViewModel) {
+        viewModel = model
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "DeviceListTableViewCell", bundle: nil), forCellReuseIdentifier: "DeviceListTableViewCell")
-        items = model
-        tableView.reloadData()
     }
     
     // MARK: - awakeFromNib()
@@ -43,25 +46,16 @@ extension DeviceListView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        return viewModel.devices.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "DeviceListTableViewCell", for: indexPath) as? DeviceListTableViewCell else { return UITableViewCell() }
-        cell.configureCell(items[indexPath.row])
+        cell.configureCell(viewModel.devices[indexPath.row].title)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate.selectedDevice(withUDID: items[indexPath.row].UUID)
+        delegate.selectedDevice(withUDID: viewModel.devices[indexPath.row].UUID)
     }
-}
-
-protocol DeviceListDelegate: class {
-    func selectedDevice(withUDID: UUID) -> Void
-}
-
-struct PeripheralDevice {
-    var name: String?
-    var UUID: UUID
 }

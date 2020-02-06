@@ -9,18 +9,19 @@
 import UIKit
 
 protocol DeviceListViewProtocol: class {
-    
+    func didFindDevices(devices: DeviceListViewModel) -> Void
+    func connectToDevice(success: Bool) -> Void
 }
 
 class DeviceListViewController: UIViewController, Alertable {
     
-    //MARK: - IBOutlets
+    // MARK: - IBOutlets
     
     @IBOutlet weak var deviceListLabel: UILabel!
     @IBOutlet weak var connectButton: UIButton!
     @IBOutlet weak var centerView: UIView!
     
-    //MARK: - Properties
+    // MARK: - Properties
     
     private var searchView: SearchView!
     private var deviceListView: DeviceListView!
@@ -28,20 +29,13 @@ class DeviceListViewController: UIViewController, Alertable {
     
     var presenter: DeviceListPresenterProtocol!
     
-    //MARK: - IBActions
+    // MARK: - IBActions
+    
     @IBAction func connectButtonPressed(_ sender: UIButton) {
-        selected.unwrap { [weak self] in
-            self?.presenter?.connectToDevice(UUID: $0, completion: { isSuccess in
-                if isSuccess {
-                    self?.navigationController?.pushViewController(HeadphoneSettingsViewController(), animated: true)
-                } else {
-                    self?.showAlert(title: "Bluetooth connection error", message: "An error during connecting to BLE device occured", preferredStyle: .alert)
-                }
-            })
-        }
+        selected.unwrap { [weak self] in self?.presenter.connectToDevice(UUID: $0) }
     }
     
-    //MARK: - Lifecycle
+    // MARK: - Lifecycle
     
     override func loadView() {
         super.loadView()
@@ -51,18 +45,32 @@ class DeviceListViewController: UIViewController, Alertable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupPresenter()
         setupUI()
+        presenter.searchForDevices()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         searchView.animateSearching()
     }
+}
+
+// MARK: - DeviceListDelegate
+
+extension DeviceListViewController: DeviceListDelegate {
+    func selectedDevice(withUDID: UUID) {
+        selected = withUDID
+    }
+}
+
+// MARK: - ControlSetupProtocol
+
+extension DeviceListViewController: ControlSetupProtocol {
     
-    private func setupSearchView() {
-        searchView.frame = centerView.bounds
-        centerView.addSubview(searchView)
+    func setupUI() {
+        setupNavigationBar()
+        setupSearchView()
+        setupConnectButton()
     }
     
     private func setupNavigationBar() {
@@ -71,13 +79,18 @@ class DeviceListViewController: UIViewController, Alertable {
         navigationController?.navigationBar.isTranslucent = true
     }
     
+    private func setupSearchView() {
+        searchView.frame = centerView.bounds
+        centerView.addSubview(searchView)
+    }
+    
     private func setupConnectButton(_ isEnabled: Bool = false, shouldAnimate: Bool = false) {
         if shouldAnimate {
             UIView.animate(withDuration: 0.2, delay: 0, options: [], animations: {
                 self.connectButton.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
             })
         }
-        connectButton.imageView?.image = UIImage(named: isEnabled ? "send_blue" : "send_black")
+        connectButton.setImage(UIImage(named: isEnabled ? "connect_selected" : "connect"), for: .normal)
         connectButton.setTitleColor(isEnabled ? .blue : .black, for: .normal)
         connectButton.tintColor = isEnabled ? .blue : .black
         connectButton.layer.borderWidth = 1
@@ -90,32 +103,25 @@ class DeviceListViewController: UIViewController, Alertable {
     }
 }
 
-extension DeviceListViewController: DeviceListDelegate {
-    func selectedDevice(withUDID: UUID) {
-        selected = withUDID
-    }
-}
-
-extension DeviceListViewController: ControlSetupProtocol {
-    func setupUI() {
-        setupNavigationBar()
-        setupConnectButton()
-        setupSearchView()
-    }
-    
-    func setupPresenter() {
-        presenter = DeviceListPresenter(service: BluetoothManager(timeout: 5.0))
-        presenter?.searchForDevices { [weak self] models in
-            guard let self = self else { return }
-            self.deviceListView.frame = self.centerView.bounds
-            self.deviceListView.delegate = self
-            self.deviceListView.commonInit(models.map({ PeripheralDevice(name: $0.name, UUID: $0.identifier) }))
-            self.centerView.addSubview(self.deviceListView)
-            self.setupConnectButton(models.count > 0, shouldAnimate: true)
-        }
-    }
-}
-
 extension DeviceListViewController: DeviceListViewProtocol {
     
+    func didFindDevices(devices: DeviceListViewModel) {
+        if devices.devices.count > 0 {
+            self.deviceListView.frame = self.centerView.bounds
+            self.deviceListView.delegate = self
+            self.deviceListView.commonInit(devices)
+            self.centerView.addSubview(self.deviceListView)
+            self.setupConnectButton(true, shouldAnimate: true)
+        } else {
+            self.showAlert(title: "No Bluetooth devices found", message: "", preferredStyle: .alert)
+        }
+    }
+    
+    func connectToDevice(success: Bool) {
+        if success {
+            navigationController?.pushViewController(HeadphoneSettingsViewController(), animated: true)
+        } else {
+            showAlert(title: "Bluetooth connection error", message: "An error during connecting to BLE device occured", preferredStyle: .alert)
+        }
+    }
 }

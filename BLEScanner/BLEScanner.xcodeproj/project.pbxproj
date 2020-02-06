@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B37CD35A23EBF2EA00CED116 /* DeviceListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37CD35923EBF2EA00CED116 /* DeviceListModel.swift */; };
+		B37CD35A23EBF2EA00CED116 /* DeviceListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37CD35923EBF2EA00CED116 /* DeviceListViewModel.swift */; };
 		B37CD35D23EBF72100CED116 /* ModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37CD35C23EBF72100CED116 /* ModuleBuilder.swift */; };
 		B38B293B23EB72CC0059F96D /* Optional+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38B293A23EB72CC0059F96D /* Optional+Extension.swift */; };
 		B38B293D23EB72EF0059F96D /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38B293C23EB72EF0059F96D /* Bundle+Extension.swift */; };
@@ -17,7 +17,6 @@
 		C323335623EAD891000D126D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C323335523EAD891000D126D /* AppDelegate.swift */; };
 		C323335823EAD892000D126D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C323335723EAD892000D126D /* SceneDelegate.swift */; };
 		C323335A23EAD892000D126D /* DeviceListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C323335923EAD892000D126D /* DeviceListViewController.swift */; };
-		C323335D23EAD892000D126D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C323335B23EAD892000D126D /* Main.storyboard */; };
 		C323335F23EAD894000D126D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C323335E23EAD894000D126D /* Assets.xcassets */; };
 		C323336223EAD894000D126D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C323336023EAD894000D126D /* LaunchScreen.storyboard */; };
 		C323336D23EAD894000D126D /* BLEScannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C323336C23EAD894000D126D /* BLEScannerTests.swift */; };
@@ -30,6 +29,7 @@
 		C323339223EB15B3000D126D /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C323339123EB15B3000D126D /* BluetoothManager.swift */; };
 		C358C5BD23EB25BD009D7095 /* HeadphoneSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C358C5BB23EB25BD009D7095 /* HeadphoneSettingsViewController.swift */; };
 		C358C5BE23EB25BD009D7095 /* HeadphoneSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C358C5BC23EB25BD009D7095 /* HeadphoneSettingsViewController.xib */; };
+		C396370D23EC1A6000797DF0 /* DeviceList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C396370B23EC1A6000797DF0 /* DeviceList.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,7 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B37CD35923EBF2EA00CED116 /* DeviceListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceListModel.swift; sourceTree = "<group>"; };
+		B37CD35923EBF2EA00CED116 /* DeviceListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceListViewModel.swift; sourceTree = "<group>"; };
 		B37CD35C23EBF72100CED116 /* ModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleBuilder.swift; sourceTree = "<group>"; };
 		B38B293A23EB72CC0059F96D /* Optional+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Extension.swift"; sourceTree = "<group>"; };
 		B38B293C23EB72EF0059F96D /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
@@ -54,7 +54,6 @@
 		C323335523EAD891000D126D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C323335723EAD892000D126D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		C323335923EAD892000D126D /* DeviceListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceListViewController.swift; sourceTree = "<group>"; };
-		C323335C23EAD892000D126D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C323335E23EAD894000D126D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C323336123EAD894000D126D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C323336323EAD894000D126D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -70,6 +69,7 @@
 		C323339123EB15B3000D126D /* BluetoothManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothManager.swift; sourceTree = "<group>"; };
 		C358C5BB23EB25BD009D7095 /* HeadphoneSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadphoneSettingsViewController.swift; sourceTree = "<group>"; };
 		C358C5BC23EB25BD009D7095 /* HeadphoneSettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeadphoneSettingsViewController.xib; sourceTree = "<group>"; };
+		C396370C23EC1A6000797DF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = BLEScanner/Base.lproj/DeviceList.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,9 +129,9 @@
 		B38B294423EB751F0059F96D /* DeviceList */ = {
 			isa = PBXGroup;
 			children = (
-				C323335923EAD892000D126D /* DeviceListViewController.swift */,
-				B38B294523EB75330059F96D /* DeviceListPresenter.swift */,
-				B37CD35923EBF2EA00CED116 /* DeviceListModel.swift */,
+				C396370523EC05AB00797DF0 /* View */,
+				C396370923EC0D5E00797DF0 /* Presenter */,
+				C396370A23EC0D6600797DF0 /* Model */,
 			);
 			path = DeviceList;
 			sourceTree = "<group>";
@@ -173,7 +173,6 @@
 				C300DCF923EB23CF000454BE /* Application */,
 				C323339023EB15A1000D126D /* Services */,
 				C350451223EB230400EDCC72 /* UI */,
-				C323335B23EAD892000D126D /* Main.storyboard */,
 			);
 			path = BLEScanner;
 			sourceTree = "<group>";
@@ -190,7 +189,6 @@
 		C323337723EAE0AC000D126D /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
-				C358C5BA23EB2580009D7095 /* HeadphoneSettings */,
 				C323338B23EB1046000D126D /* DeviceList */,
 				C323338A23EB1033000D126D /* SearchView */,
 			);
@@ -210,8 +208,8 @@
 			isa = PBXGroup;
 			children = (
 				C323339323EB1CB8000D126D /* DeviceListTableViewCell */,
-				C323338C23EB1059000D126D /* DeviceListView.xib */,
 				C323338E23EB1067000D126D /* DeviceListView.swift */,
+				C323338C23EB1059000D126D /* DeviceListView.xib */,
 			);
 			path = DeviceList;
 			sourceTree = "<group>";
@@ -236,6 +234,7 @@
 		C350451223EB230400EDCC72 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				C358C5BA23EB2580009D7095 /* HeadphoneSettings */,
 				B38B294423EB751F0059F96D /* DeviceList */,
 				C323337723EAE0AC000D126D /* CustomViews */,
 			);
@@ -249,6 +248,31 @@
 				C358C5BC23EB25BD009D7095 /* HeadphoneSettingsViewController.xib */,
 			);
 			path = HeadphoneSettings;
+			sourceTree = "<group>";
+		};
+		C396370523EC05AB00797DF0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C396370B23EC1A6000797DF0 /* DeviceList.storyboard */,
+				C323335923EAD892000D126D /* DeviceListViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C396370923EC0D5E00797DF0 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				B38B294523EB75330059F96D /* DeviceListPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		C396370A23EC0D6600797DF0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B37CD35923EBF2EA00CED116 /* DeviceListViewModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -332,12 +356,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C396370D23EC1A6000797DF0 /* DeviceList.storyboard in Resources */,
 				C323338D23EB1059000D126D /* DeviceListView.xib in Resources */,
 				C323337D23EAE108000D126D /* SearchView.xib in Resources */,
 				C358C5BE23EB25BD009D7095 /* HeadphoneSettingsViewController.xib in Resources */,
 				C323336223EAD894000D126D /* LaunchScreen.storyboard in Resources */,
 				C323335F23EAD894000D126D /* Assets.xcassets in Resources */,
-				C323335D23EAD892000D126D /* Main.storyboard in Resources */,
 				C323338523EB0D6A000D126D /* DeviceListTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -363,7 +387,7 @@
 				C323339223EB15B3000D126D /* BluetoothManager.swift in Sources */,
 				B38B293B23EB72CC0059F96D /* Optional+Extension.swift in Sources */,
 				C358C5BD23EB25BD009D7095 /* HeadphoneSettingsViewController.swift in Sources */,
-				B37CD35A23EBF2EA00CED116 /* DeviceListModel.swift in Sources */,
+				B37CD35A23EBF2EA00CED116 /* DeviceListViewModel.swift in Sources */,
 				B37CD35D23EBF72100CED116 /* ModuleBuilder.swift in Sources */,
 				C323335A23EAD892000D126D /* DeviceListViewController.swift in Sources */,
 				B38B294123EB73240059F96D /* AlertableProtocol.swift in Sources */,
@@ -393,20 +417,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		C323335B23EAD892000D126D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C323335C23EAD892000D126D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		C323336023EAD894000D126D /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				C323336123EAD894000D126D /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		C396370B23EC1A6000797DF0 /* DeviceList.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C396370C23EC1A6000797DF0 /* Base */,
+			);
+			name = DeviceList.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -531,14 +555,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7635ZG24BN;
+				DEVELOPMENT_TEAM = FDR4323K8N;
 				INFOPLIST_FILE = BLEScanner/Application/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.duolts.BLEScanner1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.duolts.BLEScanner2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

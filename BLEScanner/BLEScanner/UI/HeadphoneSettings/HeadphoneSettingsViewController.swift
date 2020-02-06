@@ -76,8 +76,13 @@ class HeadphoneSettingsViewController: UIViewController {
     }
     
     private func redrawSendButton(enabled: Bool) {
+        self.sendButton.setImage(UIImage(named: enabled ? "send_blue" : "send_black"), for: .normal)
         sendButton.layer.borderColor = enabled ? UIColor.blue.cgColor : UIColor.black.cgColor
         sendButton.setTitleColor(enabled ? .blue : .black, for: .normal)
+        sendButton.layer.shadowColor = UIColor.gray.cgColor
+        sendButton.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
+        sendButton.layer.shadowOpacity = 1.0
+        sendButton.layer.shadowRadius = 2.0
     }
     
     @objc func leftTapAction() {

@@ -9,6 +9,10 @@
 import Foundation
 import CoreBluetooth
 
+public enum BluetoothCommands {
+    case disconnect, play, pause, next
+}
+
 protocol BluetoothManagerProtocol: class {
     func set(timeout: Double)
     func searchForDevices(completion: @escaping ([CBPeripheral]) -> Void)
@@ -29,6 +33,9 @@ class BluetoothManager: NSObject {
     }
 }
 
+
+// MARK: - CBCentralManagerDelegate
+
 extension BluetoothManager: CBCentralManagerDelegate {
     
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
@@ -47,6 +54,8 @@ extension BluetoothManager: CBCentralManagerDelegate {
         discoveredDevices.append(peripheral)
     }
 }
+
+// MARK: - BluetoothManagerProtocol
 
 extension BluetoothManager: BluetoothManagerProtocol {
     func set(timeout: Double) {

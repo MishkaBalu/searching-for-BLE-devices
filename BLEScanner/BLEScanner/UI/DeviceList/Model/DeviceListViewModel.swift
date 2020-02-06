@@ -1,5 +1,5 @@
 //
-//  DeviceListModel.swift
+//  DeviceListViewModel.swift
 //  BLEScanner
 //
 //  Created by Shkolnyk Leonid on 06.02.2020.
@@ -9,6 +9,11 @@
 import Foundation
 import CoreBluetooth
 
-struct DeviceListModel {
-    var devices: [CBPeripheral]
+struct DeviceListViewModel {
+    var devices: [PeripheralDevice]
+}
+
+struct PeripheralDevice {
+    var title: String
+    var UUID: UUID
 }

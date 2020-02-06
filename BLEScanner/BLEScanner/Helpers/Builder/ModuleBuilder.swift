@@ -14,9 +14,8 @@ protocol Builder {
 
 class ModuleBuilder: Builder {
     static func createMainModule() -> UIViewController {
-        let model = DeviceListModel(devices: [])
-        let view = DeviceListViewController()
-        let presenter = DeviceListPresenter(interface: view, model: model)
+        let view = UIStoryboard(name: "DeviceList", bundle: nil).instantiateViewController(withIdentifier: "DeviceList") as! DeviceListViewController
+        let presenter = DeviceListPresenter(interface: view)
         view.presenter = presenter
         return view
     }

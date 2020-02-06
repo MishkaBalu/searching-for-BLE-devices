@@ -71,6 +71,7 @@
                 </stackView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H43-yn-4NL">
                     <rect key="frame" x="115.5" y="561" width="144" height="46"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="144" id="Ryg-f4-56H"/>
                         <constraint firstAttribute="height" constant="46" id="T5V-iO-jca"/>

@@ -10,7 +10,6 @@ import UIKit
 
 class SearchView: UIView {
     
-    //MARK: - Outlets
     @IBOutlet weak var searchImageView: UIImageView!
     
     override class func awakeFromNib() {
