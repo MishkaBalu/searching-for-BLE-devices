@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol DeviceListViewProtocol: class {
+    
+}
+
 class DeviceListViewController: UIViewController, Alertable {
     
     //MARK: - IBOutlets
@@ -22,7 +26,7 @@ class DeviceListViewController: UIViewController, Alertable {
     private var deviceListView: DeviceListView!
     private var selected: UUID?
     
-    private var presenter: DeviceListPresenterProtocol?
+    var presenter: DeviceListPresenterProtocol!
     
     //MARK: - IBActions
     @IBAction func connectButtonPressed(_ sender: UIButton) {
@@ -110,4 +114,8 @@ extension DeviceListViewController: ControlSetupProtocol {
             self.setupConnectButton(models.count > 0, shouldAnimate: true)
         }
     }
+}
+
+extension DeviceListViewController: DeviceListViewProtocol {
+    
 }

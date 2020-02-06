@@ -14,16 +14,21 @@ enum BluetoothCommands {
 }
 
 protocol DeviceListPresenterProtocol: class {
+    init(interface: DeviceListViewProtocol, model: DeviceListModel)
     func searchForDevices(completion: @escaping ([CBPeripheral]) -> Void)
     func connectToDevice(UUID: UUID, completion: @escaping (Bool) -> Void)
     func sendCommand(to device: UUID, command: BluetoothCommands, completion: @escaping (Bool) -> Void)
 }
 
 class DeviceListPresenter {
+    private let view: DeviceListViewProtocol
+    private let model: DeviceListModel
     private var manager: BluetoothManagerProtocol!
     
-    init(service: BluetoothManager) {
-        manager = service
+    required init(interface: DeviceListViewProtocol, model: DeviceListModel) {
+        view = interface
+        self.model = model
+        manager = BluetoothManager(timeout: 5.0)
     }
 }
 

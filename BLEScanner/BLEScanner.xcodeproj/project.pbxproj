@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B37CD35A23EBF2EA00CED116 /* DeviceListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37CD35923EBF2EA00CED116 /* DeviceListModel.swift */; };
+		B37CD35D23EBF72100CED116 /* ModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37CD35C23EBF72100CED116 /* ModuleBuilder.swift */; };
 		B38B293B23EB72CC0059F96D /* Optional+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38B293A23EB72CC0059F96D /* Optional+Extension.swift */; };
 		B38B293D23EB72EF0059F96D /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38B293C23EB72EF0059F96D /* Bundle+Extension.swift */; };
 		B38B294123EB73240059F96D /* AlertableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38B294023EB73240059F96D /* AlertableProtocol.swift */; };
@@ -41,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B37CD35923EBF2EA00CED116 /* DeviceListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceListModel.swift; sourceTree = "<group>"; };
+		B37CD35C23EBF72100CED116 /* ModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleBuilder.swift; sourceTree = "<group>"; };
 		B38B293A23EB72CC0059F96D /* Optional+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Extension.swift"; sourceTree = "<group>"; };
 		B38B293C23EB72EF0059F96D /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
 		B38B294023EB73240059F96D /* AlertableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertableProtocol.swift; sourceTree = "<group>"; };
@@ -86,9 +90,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B37CD35B23EBF70F00CED116 /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				B37CD35C23EBF72100CED116 /* ModuleBuilder.swift */,
+			);
+			path = Builder;
+			sourceTree = "<group>";
+		};
 		B38B293923EB72B40059F96D /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				B37CD35B23EBF70F00CED116 /* Builder */,
 				B38B293F23EB730F0059F96D /* Protocols */,
 				B38B293E23EB73040059F96D /* Extensions */,
 			);
@@ -118,6 +131,7 @@
 			children = (
 				C323335923EAD892000D126D /* DeviceListViewController.swift */,
 				B38B294523EB75330059F96D /* DeviceListPresenter.swift */,
+				B37CD35923EBF2EA00CED116 /* DeviceListModel.swift */,
 			);
 			path = DeviceList;
 			sourceTree = "<group>";
@@ -349,6 +363,8 @@
 				C323339223EB15B3000D126D /* BluetoothManager.swift in Sources */,
 				B38B293B23EB72CC0059F96D /* Optional+Extension.swift in Sources */,
 				C358C5BD23EB25BD009D7095 /* HeadphoneSettingsViewController.swift in Sources */,
+				B37CD35A23EBF2EA00CED116 /* DeviceListModel.swift in Sources */,
+				B37CD35D23EBF72100CED116 /* ModuleBuilder.swift in Sources */,
 				C323335A23EAD892000D126D /* DeviceListViewController.swift in Sources */,
 				B38B294123EB73240059F96D /* AlertableProtocol.swift in Sources */,
 				B38B294323EB747E0059F96D /* ControlSetupProtocol.swift in Sources */,
