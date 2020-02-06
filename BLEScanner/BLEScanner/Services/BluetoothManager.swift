@@ -10,7 +10,7 @@ import Foundation
 import CoreBluetooth
 
 public enum BluetoothCommands {
-    case disconnect, play, pause, next
+    case left, right, both
 }
 
 protocol BluetoothManagerProtocol: class {
@@ -69,10 +69,17 @@ extension BluetoothManager: BluetoothManagerProtocol {
     }
     
     func connectToDevice(UUID: UUID, completion: @escaping (Bool) -> Void) {
-        completion(true)
+        completion(Bool.random())
     }
     
     func sendCommand(to device: UUID, command: BluetoothCommands, completion: @escaping (Bool) -> Void) {
-        completion(true)
+        switch command {
+        case .left:
+            completion(Bool.random())
+        case .right:
+            completion(Bool.random())
+        case .both:
+            completion(Bool.random())
+        }
     }
 }

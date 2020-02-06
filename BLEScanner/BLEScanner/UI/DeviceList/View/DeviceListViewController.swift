@@ -10,7 +10,9 @@ import UIKit
 
 protocol DeviceListViewProtocol: class {
     func didFindDevices(devices: DeviceListViewModel) -> Void
-    func connectToDevice(success: Bool) -> Void
+    func goToDevice(controller: UIViewController)
+    func notFoundDevices()
+    func showError(message: String)
 }
 
 class DeviceListViewController: UIViewController, Alertable {
@@ -46,12 +48,8 @@ class DeviceListViewController: UIViewController, Alertable {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        presenter.searchForDevices()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         searchView.animateSearching()
+        presenter.searchForDevices()
     }
 }
 
@@ -60,6 +58,7 @@ class DeviceListViewController: UIViewController, Alertable {
 extension DeviceListViewController: DeviceListDelegate {
     func selectedDevice(withUDID: UUID) {
         selected = withUDID
+        setupConnectButton(true)
     }
 }
 
@@ -106,22 +105,29 @@ extension DeviceListViewController: ControlSetupProtocol {
 extension DeviceListViewController: DeviceListViewProtocol {
     
     func didFindDevices(devices: DeviceListViewModel) {
-        if devices.devices.count > 0 {
-            self.deviceListView.frame = self.centerView.bounds
-            self.deviceListView.delegate = self
-            self.deviceListView.commonInit(devices)
-            self.centerView.addSubview(self.deviceListView)
-            self.setupConnectButton(true, shouldAnimate: true)
-        } else {
-            self.showAlert(title: "No Bluetooth devices found", message: "", preferredStyle: .alert)
-        }
+        self.deviceListView.frame = self.centerView.bounds
+        self.deviceListView.delegate = self
+        self.deviceListView.commonInit(devices)
+        self.centerView.addSubview(self.deviceListView)
+        self.setupConnectButton(shouldAnimate: true)
     }
     
-    func connectToDevice(success: Bool) {
-        if success {
-            navigationController?.pushViewController(HeadphoneSettingsViewController(), animated: true)
-        } else {
-            showAlert(title: "Bluetooth connection error", message: "An error during connecting to BLE device occured", preferredStyle: .alert)
-        }
+    func notFoundDevices() {
+        let emptyStateView = UIView(frame: self.centerView.bounds)
+        let emptyStateLabel = UILabel(frame: emptyStateView.bounds)
+        emptyStateLabel.text = "No Bluetooth devices found :("
+        emptyStateLabel.textAlignment = .center
+        emptyStateLabel.font = UIFont(name: "Menlo-Regular", size: 16)
+        emptyStateView.addSubview(emptyStateLabel)
+        searchView.isHidden = true
+        centerView.addSubview(emptyStateLabel)
+    }
+    
+    func goToDevice(controller: UIViewController) {
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func showError(message: String) {
+        showAlert(message: message)
     }
 }

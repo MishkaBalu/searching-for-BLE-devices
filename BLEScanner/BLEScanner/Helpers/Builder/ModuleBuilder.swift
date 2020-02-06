@@ -19,4 +19,11 @@ class ModuleBuilder: Builder {
         view.presenter = presenter
         return view
     }
+    
+    static func createHeadphonesModule(with manager: BluetoothManagerProtocol) -> UIViewController {
+        let view = HeadphoneSettingsViewController()
+        let presenter = HeadphonePresenter(interface: view, manager: manager)
+        view.presenter = presenter
+        return view
+    }
 }

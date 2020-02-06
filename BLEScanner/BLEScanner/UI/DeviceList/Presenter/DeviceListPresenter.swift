@@ -13,7 +13,6 @@ protocol DeviceListPresenterProtocol: class {
     init(interface: DeviceListViewProtocol)
     func searchForDevices()
     func connectToDevice(UUID: UUID) -> Void
-    func sendCommand(to device: UUID, command: BluetoothCommands, completion: @escaping (Bool) -> Void)
 }
 
 class DeviceListPresenter {
@@ -31,22 +30,27 @@ class DeviceListPresenter {
 extension DeviceListPresenter: DeviceListPresenterProtocol {
     func searchForDevices() {
         manager.searchForDevices { [weak self] devices in
-            let model = Factory.make(model: devices)
-            self?.view.didFindDevices(devices: model)
+            if devices.count > 0 {
+                let model = Factory.make(model: devices)
+                self?.view.didFindDevices(devices: model)
+            } else {
+                self?.view.notFoundDevices()
+            }
         }
     }
     
     func connectToDevice(UUID: UUID) -> Void {
         manager.connectToDevice(UUID: UUID) { [weak self] isSuccess in
-            self?.view.connectToDevice(success: isSuccess)
+            guard let self = self else { return }
+            if isSuccess {
+                let module = ModuleBuilder.createHeadphonesModule(with: self.manager)
+                self.view.goToDevice(controller: module)
+            } else {
+                self.view.showError(message: "Unable to connect to Bluetooth device")
+            }
         }
     }
-    
-    func sendCommand(to device: UUID, command: BluetoothCommands, completion: @escaping (Bool) -> Void) {
-        manager.sendCommand(to: device, command: command, completion: completion)
-    }
 }
-
 
 // MARK: - Factory
 
