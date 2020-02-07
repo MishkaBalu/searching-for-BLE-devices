@@ -9,7 +9,8 @@
 import UIKit
 
 protocol HeadphoneSettingsViewProtocol: class, Alertable {
-    
+    func commandSent()
+    func commandError()
 }
 
 class HeadphoneSettingsViewController: UIViewController {
@@ -52,7 +53,7 @@ class HeadphoneSettingsViewController: UIViewController {
     
     // MARK: - Actions
     @IBAction func sendButtonTapped(_ sender: Any) {
-//        presenter.sendCommand(to: <#T##UUID#>, command: <#T##BluetoothCommands#>, completion: <#T##(Bool) -> Void#>)
+        presenter.sendCommand(to: UUID(), command: .play)
     }
     
     // MARK: - Lifecycle
@@ -119,5 +120,11 @@ extension HeadphoneSettingsViewController: ControlSetupProtocol {
 }
 
 extension HeadphoneSettingsViewController: HeadphoneSettingsViewProtocol {
+    func commandSent() {
+//        showToast(with: .commandSent)
+    }
     
+    func commandError() {
+//        showToast(with: .disconnected)
+    }
 }

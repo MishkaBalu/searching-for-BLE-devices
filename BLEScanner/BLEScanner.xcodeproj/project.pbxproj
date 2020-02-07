@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B358C3F023ECD2B400BC8969 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B358C3EF23ECD2B400BC8969 /* UIViewController+Extension.swift */; };
 		B37CD35A23EBF2EA00CED116 /* DeviceListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37CD35923EBF2EA00CED116 /* DeviceListViewModel.swift */; };
 		B37CD35D23EBF72100CED116 /* ModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37CD35C23EBF72100CED116 /* ModuleBuilder.swift */; };
+		B37CD36A23ECA5B600CED116 /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37CD36923ECA5B600CED116 /* PopupView.swift */; };
 		B38B293B23EB72CC0059F96D /* Optional+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38B293A23EB72CC0059F96D /* Optional+Extension.swift */; };
 		B38B293D23EB72EF0059F96D /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38B293C23EB72EF0059F96D /* Bundle+Extension.swift */; };
 		B38B294123EB73240059F96D /* AlertableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38B294023EB73240059F96D /* AlertableProtocol.swift */; };
@@ -44,8 +46,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B358C3EF23ECD2B400BC8969 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		B37CD35923EBF2EA00CED116 /* DeviceListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceListViewModel.swift; sourceTree = "<group>"; };
 		B37CD35C23EBF72100CED116 /* ModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleBuilder.swift; sourceTree = "<group>"; };
+		B37CD36923ECA5B600CED116 /* PopupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
 		B38B293A23EB72CC0059F96D /* Optional+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Extension.swift"; sourceTree = "<group>"; };
 		B38B293C23EB72EF0059F96D /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
 		B38B294023EB73240059F96D /* AlertableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertableProtocol.swift; sourceTree = "<group>"; };
@@ -100,6 +104,14 @@
 			path = Builder;
 			sourceTree = "<group>";
 		};
+		B37CD35E23EC90E700CED116 /* PopupView */ = {
+			isa = PBXGroup;
+			children = (
+				B37CD36923ECA5B600CED116 /* PopupView.swift */,
+			);
+			name = PopupView;
+			sourceTree = "<group>";
+		};
 		B38B293923EB72B40059F96D /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -115,6 +127,7 @@
 			children = (
 				B38B293A23EB72CC0059F96D /* Optional+Extension.swift */,
 				B38B293C23EB72EF0059F96D /* Bundle+Extension.swift */,
+				B358C3EF23ECD2B400BC8969 /* UIViewController+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -191,6 +204,7 @@
 		C323337723EAE0AC000D126D /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				B37CD35E23EC90E700CED116 /* PopupView */,
 				C323338B23EB1046000D126D /* DeviceList */,
 				C323338A23EB1033000D126D /* SearchView */,
 			);
@@ -406,7 +420,9 @@
 				C323339223EB15B3000D126D /* BluetoothManager.swift in Sources */,
 				B38B293B23EB72CC0059F96D /* Optional+Extension.swift in Sources */,
 				C358C5BD23EB25BD009D7095 /* HeadphoneSettingsViewController.swift in Sources */,
+				B358C3F023ECD2B400BC8969 /* UIViewController+Extension.swift in Sources */,
 				C36B913423EC7101006FBA42 /* HeadphonePresenter.swift in Sources */,
+				B37CD36A23ECA5B600CED116 /* PopupView.swift in Sources */,
 				B37CD35A23EBF2EA00CED116 /* DeviceListViewModel.swift in Sources */,
 				B37CD35D23EBF72100CED116 /* ModuleBuilder.swift in Sources */,
 				C323335A23EAD892000D126D /* DeviceListViewController.swift in Sources */,
@@ -575,14 +591,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FDR4323K8N;
+				DEVELOPMENT_TEAM = 8MMSL89V4V;
 				INFOPLIST_FILE = BLEScanner/Application/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.duolts.BLEScanner2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.duolts.BLEScanner4;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

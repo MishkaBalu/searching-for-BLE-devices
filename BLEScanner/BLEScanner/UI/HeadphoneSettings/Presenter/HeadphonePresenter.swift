@@ -10,7 +10,7 @@ import Foundation
 
 protocol HeadphonePresenterProtocol: class {
     init(interface: HeadphoneSettingsViewProtocol, manager: BluetoothManagerProtocol)
-    func sendCommand(to device: UUID, command: BluetoothCommands, completion: @escaping (Bool) -> Void)
+    func sendCommand(to device: UUID, command: BluetoothCommands)
 }
 
 class HeadphonePresenter {
@@ -25,7 +25,14 @@ class HeadphonePresenter {
 }
 
 extension HeadphonePresenter: HeadphonePresenterProtocol {
-    func sendCommand(to device: UUID, command: BluetoothCommands, completion: @escaping (Bool) -> Void) {
+    func sendCommand(to device: UUID, command: BluetoothCommands) {
+        manager.sendCommand(to: device, command: .play) { isSuccess in
+            if isSuccess {
+                self.view.commandSent()
+            } else {
+                self.view.commandError()
+            }
+        }
         //TODO: mock sending a command
     }
 }
