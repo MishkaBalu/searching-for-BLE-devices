@@ -10,12 +10,10 @@ import UIKit
 
 public extension UIViewController {
     
-    func showToast() {
-        setupNotificationView()
-    }
-    
-    private func setupNotificationView() {
+    func showToast(with type: ConnectionStatus) {
         let notificationView = PopUpView()
+        notificationView.popup(with: type)
+        
         view.addSubview(notificationView)
         
         notificationView.translatesAutoresizingMaskIntoConstraints = false

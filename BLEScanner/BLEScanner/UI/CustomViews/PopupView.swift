@@ -33,7 +33,7 @@ class PopUpView: UIView {
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        randomNotoficationGenerator()
+        setupView(with: .blue)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -79,39 +79,24 @@ class PopUpView: UIView {
             notificatioLabel.leftAnchor.constraint(equalTo: iconImageView.rightAnchor, constant: 16),
             notificatioLabel.centerYAnchor.constraint(equalTo: iconImageView.centerYAnchor)
         ])
+        
+        animate()
     }
     
-    func randomNotoficationGenerator() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + Consts.timeout) { [weak self] in
-            guard let self = self else { return }
-            if self.isRed {
-                self.buttonState = .red
-                self.setupView(with: .red)
-            } else {
-                self.buttonState = .blue
-                self.setupView(with: .blue)
-            }
-            self.isRed.toggle()
-            self.animate {
-                self.randomNotoficationGenerator()
-            }
-        }
-    }
     
-    func animate(_ completion: () -> Void) {
+    private func animate() {
         isHidden = false
         UIView.animate(withDuration: Consts.durationAnimationTime, animations: {
             self.alpha = 1.0
             self.transform = self.toPossition
         }, completion: { (isCompleted) in
             if isCompleted {
-                self.randomNotoficationGenerator()
                 self.removeNotificationView()
             }
         })
     }
     
-    func removeNotificationView() {
+    private func removeNotificationView() {
         DispatchQueue.main.asyncAfter(deadline: .now() + Consts.resetAnimationTime) {
             UIView.animate(withDuration: Consts.durationAnimationTime) {
                 self.transform = self.fromPossition

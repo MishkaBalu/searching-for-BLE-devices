@@ -13,6 +13,7 @@ protocol DeviceListPresenterProtocol: class {
     init(interface: DeviceListViewProtocol)
     func searchForDevices()
     func connectToDevice(UUID: UUID) -> Void
+    func checkConnection()
 }
 
 class DeviceListPresenter {
@@ -28,6 +29,7 @@ class DeviceListPresenter {
 // MARK: - DeviceListPresenterProtocol
 
 extension DeviceListPresenter: DeviceListPresenterProtocol {
+    
     func searchForDevices() {
         manager.searchForDevices { [weak self] devices in
             if devices.count > 0 {
@@ -50,6 +52,18 @@ extension DeviceListPresenter: DeviceListPresenterProtocol {
             }
         }
     }
+    
+    func checkConnection() {
+        manager.checkConnection { [weak self] isConnected in
+            guard let self = self else { return }
+            if isConnected {
+                self.view.connection(status: .connected)
+            } else {
+                self.view.connection(status: .disconnected)
+            }
+        }
+    }
+    
 }
 
 // MARK: - Factory

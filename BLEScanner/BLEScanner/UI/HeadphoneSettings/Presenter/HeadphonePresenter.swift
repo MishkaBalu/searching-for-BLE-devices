@@ -33,6 +33,5 @@ extension HeadphonePresenter: HeadphonePresenterProtocol {
                 self.view.commandError()
             }
         }
-        //TODO: mock sending a command
     }
 }

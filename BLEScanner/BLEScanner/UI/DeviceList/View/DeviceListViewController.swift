@@ -13,9 +13,10 @@ protocol DeviceListViewProtocol: class {
     func goToDevice(controller: UIViewController)
     func notFoundDevices()
     func showError(message: String)
+    func connection(status: ConnectionStatus)
 }
 
-class DeviceListViewController: UIViewController, Alertable {
+class DeviceListViewController: BaseViewController, Alertable {
     
     // MARK: - IBOutlets
     
@@ -51,6 +52,10 @@ class DeviceListViewController: UIViewController, Alertable {
         searchView.animateSearching()
         presenter.searchForDevices()
     }
+    
+    override func timerHandler() {
+        presenter.checkConnection()
+    }
 }
 
 // MARK: - DeviceListDelegate
@@ -76,6 +81,9 @@ extension DeviceListViewController: ControlSetupProtocol {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
+        let backButtonItem = UIBarButtonItem()
+        backButtonItem.title = ""
+        navigationItem.backBarButtonItem = backButtonItem
     }
     
     private func setupSearchView() {
@@ -129,5 +137,9 @@ extension DeviceListViewController: DeviceListViewProtocol {
     
     func showError(message: String) {
         showAlert(message: message)
+    }
+    
+    func connection(status: ConnectionStatus) {
+        UIApplication.shared.keyWindow?.rootViewController?.showToast(with: status)
     }
 }

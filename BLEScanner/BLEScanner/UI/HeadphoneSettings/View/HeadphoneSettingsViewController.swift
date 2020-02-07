@@ -53,7 +53,9 @@ class HeadphoneSettingsViewController: UIViewController {
     
     // MARK: - Actions
     @IBAction func sendButtonTapped(_ sender: Any) {
-        presenter.sendCommand(to: UUID(), command: .play)
+        if leftHeadphoneEnabled || rightHeadphoneEnabled {
+            presenter.sendCommand(to: UUID(), command: .play)
+        }
     }
     
     // MARK: - Lifecycle
@@ -87,8 +89,8 @@ class HeadphoneSettingsViewController: UIViewController {
         rightHeadphoneEnabled.toggle()
     }
     
-    @objc func backAction() {
-        self.navigationController?.popViewController(animated: true)
+    @objc private func pop() {
+        navigationController?.popViewController(animated: true)
     }
 }
 
@@ -115,16 +117,16 @@ extension HeadphoneSettingsViewController: ControlSetupProtocol {
         navigationController?.navigationBar.isTranslucent = true
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
-        navigationItem.backBarButtonItem?.image = UIImage(named: "back")
+        navigationController?.navigationBar.tintColor = .black
     }
 }
 
 extension HeadphoneSettingsViewController: HeadphoneSettingsViewProtocol {
     func commandSent() {
-//        showToast(with: .commandSent)
+        UIApplication.shared.keyWindow?.rootViewController?.showToast(with: .commandSent)
     }
     
     func commandError() {
-//        showToast(with: .disconnected)
+        UIApplication.shared.keyWindow?.rootViewController?.showToast(with: .disconnected)
     }
 }

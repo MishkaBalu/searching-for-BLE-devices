@@ -22,12 +22,14 @@ protocol BluetoothManagerProtocol: class {
     func searchForDevices(completion: @escaping ([CBPeripheral]) -> Void)
     func connectToDevice(UUID: UUID, completion: @escaping (Bool) -> Void)
     func sendCommand(to device: UUID, command: BluetoothCommands, completion: @escaping (Bool) -> Void)
+    func checkConnection(completion: @escaping (Bool) -> Void)
 }
 
 class BluetoothManager: NSObject {
     
     private var centralManager: CBCentralManager!
     private var discoveredDevices = [CBPeripheral]()
+    private var isConnected = false
     private var timeout = 0.0
     
     init(timeout: Double = 5.0) {
@@ -62,6 +64,7 @@ extension BluetoothManager: CBCentralManagerDelegate {
 // MARK: - BluetoothManagerProtocol
 
 extension BluetoothManager: BluetoothManagerProtocol {
+    
     func set(timeout: Double) {
         self.timeout = timeout
     }
@@ -78,7 +81,12 @@ extension BluetoothManager: BluetoothManagerProtocol {
     
     func sendCommand(to device: UUID, command: BluetoothCommands, completion: @escaping (Bool) -> Void) {
         switch command {
-        case .play: completion(Bool.random())
+        case .play: completion(isConnected)
         }
+    }
+    
+    func checkConnection(completion: @escaping (Bool) -> Void) {
+        isConnected.toggle()
+        completion(isConnected)
     }
 }
